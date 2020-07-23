@@ -21,6 +21,6 @@ public class GuessNumberGameTest {
         String answer = guessNumberGame.guess(guess);
 
         //then
-        assertEquals("1234", answer);
+        assertEquals("4A0B", answer);
     }
 }
