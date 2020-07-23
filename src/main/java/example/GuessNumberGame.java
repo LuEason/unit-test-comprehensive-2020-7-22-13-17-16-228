@@ -1,5 +1,8 @@
 package example;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class GuessNumberGame {
     private String answer;
 
@@ -8,21 +11,26 @@ public class GuessNumberGame {
     }
 
     public String guess(String guess) {
+        String result;
         if (answer.equals(guess)) {
-            return "4A0B";
+            result = "4A0B";
+        } else {
+            int aNumber = 0;
+            int bNumber = 0;
+            List guessChars = Arrays.asList(guess.split(""));
+            List answerChars = Arrays.asList(answer.split(""));
+            for (int i = 0; i < guessChars.size(); i++) {
+                if (guessChars.get(i).equals(answerChars.get(i))) {
+                    aNumber ++;
+                } else {
+                    int indexInAnswerChars = answerChars.indexOf(guessChars.get(i));
+                    if (indexInAnswerChars != -1 && i != indexInAnswerChars) {
+                        bNumber ++;
+                    }
+                }
+            }
+            result = String.format("%sA%sB", aNumber, bNumber);
         }
-        if ("1243".equals(guess)) {
-            return "2A2B";
-        }
-        if ("4321".equals(guess)) {
-            return "0A4B";
-        }
-        if ("5236".equals(guess)) {
-            return "2A0B";
-        }
-        if ("4561".equals(guess)) {
-            return "0A2B";
-        }
-        return "0A0B";
+        return result;
     }
 }
