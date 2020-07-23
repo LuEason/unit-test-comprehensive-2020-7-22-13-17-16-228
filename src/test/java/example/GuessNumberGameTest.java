@@ -12,12 +12,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_4A0B_when_answer_is_1234_given_1234() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "1234";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
@@ -27,12 +27,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_2A2B_when_answer_is_1234_given_1243() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "1243";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
@@ -42,12 +42,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_0A4B_when_answer_is_1234_given_4321() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "4321";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
@@ -57,12 +57,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_2A0B_when_answer_is_1234_given_5236() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "5236";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
@@ -72,12 +72,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_0A2B_when_answer_is_1234_given_4561() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "4561";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
@@ -87,12 +87,12 @@ public class GuessNumberGameTest {
     @Test
     void should_return_0A0B_when_answer_is_1234_given_4561() {
         //given
-        AnswerGenerator mockedAnswerGenerator = Mockito.mock(AnswerGenerator.class);
-        when(mockedAnswerGenerator.generateAnswer()).thenReturn("1234");
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
         String guess = "5678";
 
         //when
-        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedAnswerGenerator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
         String answer = guessNumberGame.guess(guess);
 
         //then
