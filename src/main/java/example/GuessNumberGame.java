@@ -36,6 +36,9 @@ public class GuessNumberGame {
         if ("12".equals(guess)) {
             return false;
         }
+        if ("1122".equals(guess)) {
+            return false;
+        }
         return false;
     }
 }
