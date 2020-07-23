@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AnswerGeneratorTest {
     @Test
@@ -27,7 +28,7 @@ public class AnswerGeneratorTest {
                 between0and10 = false;
             }
         }
-        assertEquals(true, between0and10);
+        assertTrue(between0and10);
         assertEquals(4, answerCharSet.size());
     }
 }
