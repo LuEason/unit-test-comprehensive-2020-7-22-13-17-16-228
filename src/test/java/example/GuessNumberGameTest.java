@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
@@ -97,5 +98,20 @@ public class GuessNumberGameTest {
 
         //then
         assertEquals("0A0B", answer);
+    }
+
+    @Test
+    void should_return_true_when_valid_guess_given_12() {
+        //given
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
+        String guess = "12";
+
+        //when
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
+        boolean answer = guessNumberGame.validGuess(guess);
+
+        //then
+        assertFalse(answer);
     }
 }
