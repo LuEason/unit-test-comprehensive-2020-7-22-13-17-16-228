@@ -101,7 +101,7 @@ public class GuessNumberGameTest {
     }
 
     @Test
-    void should_return_true_when_valid_guess_given_12() {
+    void should_return_false_when_valid_guess_given_12() {
         //given
         Generator mockedGenerator = Mockito.mock(Generator.class);
         when(mockedGenerator.generate()).thenReturn("1234");
@@ -116,7 +116,7 @@ public class GuessNumberGameTest {
     }
 
     @Test
-    void should_return_true_when_valid_guess_given_1122() {
+    void should_return_false_when_valid_guess_given_1122() {
         //given
         Generator mockedGenerator = Mockito.mock(Generator.class);
         when(mockedGenerator.generate()).thenReturn("1234");
@@ -131,7 +131,7 @@ public class GuessNumberGameTest {
     }
 
     @Test
-    void should_return_true_when_valid_guess_given_a234() {
+    void should_return_false_when_valid_guess_given_a234() {
         //given
         Generator mockedGenerator = Mockito.mock(Generator.class);
         when(mockedGenerator.generate()).thenReturn("1234");
