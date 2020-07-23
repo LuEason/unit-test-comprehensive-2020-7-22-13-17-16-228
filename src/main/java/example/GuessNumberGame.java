@@ -1,7 +1,9 @@
 package example;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GuessNumberGame {
     private String answer;
@@ -33,15 +35,16 @@ public class GuessNumberGame {
     }
 
     public boolean validGuess(String guess) {
-        if ("12".equals(guess)) {
-            return false;
+        Set<Character> guessCharSet = new HashSet<>();
+        boolean between0and10 = true;
+        for (char character : guess.toCharArray()) {
+            guessCharSet.add(character);
         }
-        if ("1122".equals(guess)) {
-            return false;
+        for (char character : guessCharSet) {
+            if (character < '0' || character > '9') {
+                between0and10 = false;
+            }
         }
-        if ("a234".equals(guess)) {
-            return false;
-        }
-        return true;
+        return guessCharSet.size() == 4 && between0and10;
     }
 }
