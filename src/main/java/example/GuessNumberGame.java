@@ -31,4 +31,8 @@ public class GuessNumberGame {
         }
         return result;
     }
+
+    public boolean validGuess(String guess) {
+        return false;
+    }
 }
