@@ -114,4 +114,19 @@ public class GuessNumberGameTest {
         //then
         assertFalse(answer);
     }
+
+    @Test
+    void should_return_true_when_valid_guess_given_1122() {
+        //given
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
+        String guess = "1122";
+
+        //when
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
+        boolean answer = guessNumberGame.validGuess(guess);
+
+        //then
+        assertFalse(answer);
+    }
 }
