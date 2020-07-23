@@ -3,8 +3,7 @@ package example;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
@@ -143,5 +142,20 @@ public class GuessNumberGameTest {
 
         //then
         assertFalse(answer);
+    }
+
+    @Test
+    void should_return_true_when_valid_guess_given_1234() {
+        //given
+        Generator mockedGenerator = Mockito.mock(Generator.class);
+        when(mockedGenerator.generate()).thenReturn("1234");
+        String guess = "1234";
+
+        //when
+        GuessNumberGame guessNumberGame = new GuessNumberGame(mockedGenerator);
+        boolean answer = guessNumberGame.validGuess(guess);
+
+        //then
+        assertTrue(answer);
     }
 }
