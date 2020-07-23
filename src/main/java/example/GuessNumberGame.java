@@ -17,13 +17,11 @@ public class GuessNumberGame {
         } else {
             int aNumber = 0;
             int bNumber = 0;
-            List guessChars = Arrays.asList(guess.split(""));
-            List answerChars = Arrays.asList(answer.split(""));
-            for (int i = 0; i < guessChars.size(); i++) {
-                if (guessChars.get(i).equals(answerChars.get(i))) {
+            for (int i = 0; i < guess.length(); i++) {
+                if (guess.charAt(i) == answer.charAt(i)) {
                     aNumber ++;
                 } else {
-                    int indexInAnswerChars = answerChars.indexOf(guessChars.get(i));
+                    int indexInAnswerChars = answer.indexOf(guess.charAt(i));
                     if (indexInAnswerChars != -1 && i != indexInAnswerChars) {
                         bNumber ++;
                     }
