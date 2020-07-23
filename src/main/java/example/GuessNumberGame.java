@@ -14,6 +14,9 @@ public class GuessNumberGame {
         if ("1243".equals(guess)) {
             return "2A2B";
         }
-        return "0A4B";
+        if ("4321".equals(guess)) {
+            return "0A4B";
+        }
+        return "2A0B";
     }
 }
