@@ -1,13 +1,12 @@
 package example;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class GuessNumberGame {
     private final String answer;
+    private final Validator validator;
 
-    public GuessNumberGame(Generator generator) {
+    public GuessNumberGame(Generator generator, Validator validator) {
         this.answer = generator.generate();
+        this.validator = validator;
     }
 
     public String guess(String guess) {
@@ -32,18 +31,7 @@ public class GuessNumberGame {
         return result;
     }
 
-    public boolean validGuess(String guess) {
-        Set<Character> guessCharSet = new HashSet<>();
-        boolean between0and10 = true;
-        for (char character : guess.toCharArray()) {
-            guessCharSet.add(character);
-        }
-        for (char character : guessCharSet) {
-            if (character < '0' || character > '9') {
-                between0and10 = false;
-                break;
-            }
-        }
-        return guessCharSet.size() == 4 && between0and10;
+    public Validator getValidator() {
+        return validator;
     }
 }

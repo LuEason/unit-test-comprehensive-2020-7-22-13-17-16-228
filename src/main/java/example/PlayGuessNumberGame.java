@@ -7,8 +7,7 @@ import java.io.InputStreamReader;
 public class PlayGuessNumberGame {
 
     public static void main(String[] args) throws IOException {
-        Generator generator = new AnswerGenerator();
-        GuessNumberGame guessNumberGame = new GuessNumberGame(generator);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(new AnswerGenerator(), new GuessValidator());
         String result = "";
         int time = 6;
 
@@ -16,7 +15,7 @@ public class PlayGuessNumberGame {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("Please enter your answer:");
             String guess = br.readLine();
-            if (guessNumberGame.validGuess(guess)) {
+            if (guessNumberGame.getValidator().validate(guess)) {
                 result = guessNumberGame.guess(guess);
                 System.out.println(result);
             } else {
