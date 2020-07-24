@@ -26,6 +26,7 @@ public class AnswerGeneratorTest {
         for (char character : answerCharSet) {
             if (character < '0' || character > '9') {
                 between0and10 = false;
+                break;
             }
         }
         assertTrue(between0and10);

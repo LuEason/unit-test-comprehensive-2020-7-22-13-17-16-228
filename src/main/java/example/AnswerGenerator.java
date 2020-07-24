@@ -7,13 +7,13 @@ public class AnswerGenerator implements Generator {
     @Override
     public String generate() {
         Set<String> answerCharSet = new HashSet<>();
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         while(answerCharSet.size() < 4) {
             answerCharSet.add(Integer.toString((int) Math.floor(Math.random() * 10)));
         }
         for (String string : answerCharSet) {
-            answer += string;
+            answer.append(string);
         }
-        return answer;
+        return answer.toString();
     }
 }

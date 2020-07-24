@@ -1,12 +1,10 @@
 package example;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class GuessNumberGame {
-    private String answer;
+    private final String answer;
 
     public GuessNumberGame(Generator generator) {
         this.answer = generator.generate();
@@ -43,6 +41,7 @@ public class GuessNumberGame {
         for (char character : guessCharSet) {
             if (character < '0' || character > '9') {
                 between0and10 = false;
+                break;
             }
         }
         return guessCharSet.size() == 4 && between0and10;
