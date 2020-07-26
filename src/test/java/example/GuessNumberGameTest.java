@@ -3,11 +3,11 @@ package example;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
+import java.io.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-public class GuessNumberGameTest {
+class GuessNumberGameTest {
     private static GuessNumberGame guessNumberGame;
 
     @BeforeAll
@@ -87,5 +87,25 @@ public class GuessNumberGameTest {
 
         //then
         assertEquals("0A0B", answer);
+    }
+
+    @Test
+    void test_play() throws IOException {
+        //given
+        String inputMessage = "1236\n"
+                + "2345\n"
+                + "5678\n"
+                + "6789\n"
+                + "1235\n"
+                + "1234";
+        System.setIn(new ByteArrayInputStream(inputMessage.getBytes()));
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        //when
+        guessNumberGame.play();
+
+        //then
+        assertTrue(outContent.toString().endsWith("You win!\r\n"));
     }
 }
