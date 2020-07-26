@@ -8,7 +8,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AnswerGeneratorTest {
+class AnswerGeneratorTest {
     @Test
     void should_return_4_length_String_when_generate() {
         //given
