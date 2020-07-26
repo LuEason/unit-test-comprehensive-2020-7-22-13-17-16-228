@@ -1,5 +1,9 @@
 package example;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class GuessNumberGame {
     private final String answer;
     private final Validator validator;
@@ -31,7 +35,28 @@ public class GuessNumberGame {
         return result;
     }
 
-    public Validator getValidator() {
-        return validator;
+    public void play() throws IOException {
+        String result = "";
+        int time = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        while (time < 6 && !"4A0B".equals(result)) {
+            String guess;
+            System.out.print("Please enter your answer:");
+            guess = br.readLine();
+            if (validator.validate(guess)) {
+                result = guess(guess);
+                System.out.println(result);
+            } else {
+                System.out.println("Wrong Input，Input again");
+            }
+            time ++;
+        }
+        if ("4A0B".equals(result)) {
+            System.out.println("You win!");
+        } else {
+            System.out.println(answer);
+            System.out.println("You lose!");
+        }
     }
 }
