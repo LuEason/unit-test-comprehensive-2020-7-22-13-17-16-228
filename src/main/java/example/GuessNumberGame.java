@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GuessNumberGame {
+    private static final String WRONG_INPUT_INPUT_AGAIN = "Wrong Input，Input again";
+    private static final int MAX_INPUT_TIME = 6;
+    private static final String VICTORY_CONDITION = "4A0B";
+    private static final String PLEASE_ENTER_YOUR_ANSWER = "Please enter your answer:";
+    private static final String YOU_WIN = "You win!";
+    private static final String YOU_LOSE = "You lose!";
+
     private final String answer;
     private final Validator validator;
 
@@ -34,23 +41,24 @@ public class GuessNumberGame {
         int time = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while (time < 6 && !"4A0B".equals(result)) {
+        while (time < MAX_INPUT_TIME && !VICTORY_CONDITION.equals(result)) {
             String guess;
-            System.out.print("Please enter your answer:");
+            System.out.print(PLEASE_ENTER_YOUR_ANSWER);
             guess = br.readLine();
             if (validator.validate(guess)) {
                 result = guess(guess);
                 System.out.println(result);
             } else {
-                System.out.println("Wrong Input，Input again");
+                System.out.println(WRONG_INPUT_INPUT_AGAIN);
             }
+
             time ++;
         }
-        if ("4A0B".equals(result)) {
-            System.out.println("You win!");
+        if (VICTORY_CONDITION.equals(result)) {
+            System.out.println(YOU_WIN);
         } else {
             System.out.println(answer);
-            System.out.println("You lose!");
+            System.out.println(YOU_LOSE);
         }
     }
 }
