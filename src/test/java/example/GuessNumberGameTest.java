@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -15,6 +18,14 @@ class GuessNumberGameTest {
         Generator mockedGenerator = Mockito.mock(Generator.class);
         when(mockedGenerator.generate()).thenReturn("1234");
         guessNumberGame = new GuessNumberGame(mockedGenerator, new GuessValidator());
+    }
+
+    private List<String> testGuessNuberGame(List<String> guesses) {
+        List<String> expectedAnswers = new ArrayList<>();
+        for (String guess : guesses) {
+            expectedAnswers.add(guessNumberGame.guess(guess));
+        }
+        return expectedAnswers;
     }
 
     @Test
@@ -87,6 +98,33 @@ class GuessNumberGameTest {
 
         //then
         assertEquals("0A0B", answer);
+    }
+
+    @Test
+    void testAllStateOfGuessNumberGame() {
+        //given
+        List<String> guesses = new ArrayList<>();
+        guesses.add("1234");
+        guesses.add("1243");
+        guesses.add("4321");
+        guesses.add("5236");
+        guesses.add("4561");
+        guesses.add("5678");
+        List<String> expectedAnswers = new ArrayList<>();
+        expectedAnswers.add("4A0B");
+        expectedAnswers.add("2A2B");
+        expectedAnswers.add("0A4B");
+        expectedAnswers.add("2A0B");
+        expectedAnswers.add("0A2B");
+        expectedAnswers.add("0A0B");
+
+        //when
+        List<String> answers = testGuessNuberGame(guesses);
+
+        //then
+        for (int i = 0; i < answers.size(); i++) {
+            assertEquals(expectedAnswers.get(i), answers.get(i));
+        }
     }
 
     @Test
