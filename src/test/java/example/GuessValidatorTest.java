@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class GuessValidatorTest {
@@ -14,6 +16,14 @@ class GuessValidatorTest {
     @BeforeAll
     static void initTestEnv() {
         validator = new GuessValidator();
+    }
+
+    private List<Boolean> testValidate(List<String> guesses) {
+        List<Boolean> expectedValidate = new ArrayList<>();
+        for (String guess : guesses) {
+            expectedValidate.add(validator.validate(guess));
+        }
+        return expectedValidate;
     }
 
     @Test
@@ -74,5 +84,30 @@ class GuessValidatorTest {
 
         //then
         assertFalse(answer);
+    }
+
+    @Test
+    void testAllStateOfValidate() {
+        //given
+        List<String> guesses = new ArrayList<>();
+        guesses.add("12");
+        guesses.add("1122");
+        guesses.add("a234");
+        guesses.add("1234");
+        guesses.add("12344");
+        List<Boolean> expectedValidates = new ArrayList<>();
+        expectedValidates.add(Boolean.FALSE);
+        expectedValidates.add(Boolean.FALSE);
+        expectedValidates.add(Boolean.FALSE);
+        expectedValidates.add(Boolean.TRUE);
+        expectedValidates.add(Boolean.FALSE);
+
+        //when
+        List<Boolean> validates = testValidate(guesses);
+
+        //then
+        for (int i = 0; i < validates.size(); i++) {
+            assertEquals(expectedValidates.get(i), validates.get(i));
+        }
     }
 }
