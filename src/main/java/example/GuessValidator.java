@@ -4,9 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GuessValidator implements Validator {
+
+    public static final int RIGHT_INPUT_LENGTH = 4;
+
     @Override
     public boolean validate(String guess) {
-        if (guess.length() != 4) {
+        if (guess.length() != RIGHT_INPUT_LENGTH) {
             return false;
         }
         Set<Character> guessCharSet = new HashSet<>();
@@ -20,6 +23,6 @@ public class GuessValidator implements Validator {
                 break;
             }
         }
-        return guessCharSet.size() == 4 && between0and10;
+        return guessCharSet.size() == RIGHT_INPUT_LENGTH && between0and10;
     }
 }
