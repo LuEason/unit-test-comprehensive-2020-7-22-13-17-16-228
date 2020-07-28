@@ -20,7 +20,7 @@ class GuessNumberGameTest {
         guessNumberGame = new GuessNumberGame(mockedGenerator, new GuessValidator());
     }
 
-    private List<String> testGuessNuberGame(List<String> guesses) {
+    private List<String> testGuessNumberGame(List<String> guesses) {
         List<String> expectedAnswers = new ArrayList<>();
         for (String guess : guesses) {
             expectedAnswers.add(guessNumberGame.guess(guess));
@@ -119,7 +119,7 @@ class GuessNumberGameTest {
         expectedAnswers.add("0A0B");
 
         //when
-        List<String> answers = testGuessNuberGame(guesses);
+        List<String> answers = testGuessNumberGame(guesses);
 
         //then
         for (int i = 0; i < answers.size(); i++) {
