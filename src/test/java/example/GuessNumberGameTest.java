@@ -20,12 +20,12 @@ class GuessNumberGameTest {
         guessNumberGame = new GuessNumberGame(mockedGenerator, new GuessValidator());
     }
 
-    private List<String> testGuessNumberGame(List<String> guesses) {
-        List<String> expectedAnswers = new ArrayList<>();
+    private List<String> getAnswersWithGuesses(List<String> guesses) {
+        List<String> answers = new ArrayList<>();
         for (String guess : guesses) {
-            expectedAnswers.add(guessNumberGame.guess(guess));
+            answers.add(guessNumberGame.guess(guess));
         }
-        return expectedAnswers;
+        return answers;
     }
 
     @Test
@@ -101,7 +101,7 @@ class GuessNumberGameTest {
     }
 
     @Test
-    void testAllStateOfGuessNumberGame() {
+    void testGuessNumberGameGivenGuessNumbers() {
         //given
         List<String> guesses = new ArrayList<>();
         guesses.add("1234");
@@ -119,7 +119,7 @@ class GuessNumberGameTest {
         expectedAnswers.add("0A0B");
 
         //when
-        List<String> answers = testGuessNumberGame(guesses);
+        List<String> answers = getAnswersWithGuesses(guesses);
 
         //then
         for (int i = 0; i < answers.size(); i++) {
