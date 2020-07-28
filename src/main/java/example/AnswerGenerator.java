@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class AnswerGenerator implements Generator {
 
+    //todo local
     private static final int ANSWER_LENGTH = 4;
     private static final int MAXIMUM_ANSWER = 10;
 

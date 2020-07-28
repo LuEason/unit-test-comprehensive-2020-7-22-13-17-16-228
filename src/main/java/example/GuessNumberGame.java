@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GuessNumberGame {
+    //todo
     private static final String WRONG_INPUT_INPUT_AGAIN = "Wrong Input，Input again";
     private static final int MAX_INPUT_TIME = 6;
     private static final String VICTORY_CONDITION = "4A0B";
+    //todo
     private static final String PLEASE_ENTER_YOUR_ANSWER = "Please enter your answer:";
     private static final String YOU_WIN = "You win!";
     private static final String YOU_LOSE = "You lose!";
@@ -21,8 +23,10 @@ public class GuessNumberGame {
     }
 
     public String guess(String guess) {
+        //todo
         int aNumber = 0;
         int bNumber = 0;
+        //todo index
         for (int i = 0; i < guess.length(); i++) {
             if (guess.charAt(i) == answer.charAt(i)) {
                 aNumber ++;
@@ -39,9 +43,11 @@ public class GuessNumberGame {
     public void play() throws IOException {
         String result = "";
         int time = 0;
+        //todo rename
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (time < MAX_INPUT_TIME && !VICTORY_CONDITION.equals(result)) {
+            //todo rename
             String guess;
             System.out.print(PLEASE_ENTER_YOUR_ANSWER);
             guess = br.readLine();

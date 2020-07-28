@@ -14,9 +14,12 @@ public class GuessValidator implements Validator {
         }
         Set<Character> guessCharSet = new HashSet<>();
         boolean between0and10 = true;
+        //todo
         for (char character : guess.toCharArray()) {
             guessCharSet.add(character);
         }
+
+        //todo
         for (char character : guessCharSet) {
             if (character < '0' || character > '9') {
                 between0and10 = false;
