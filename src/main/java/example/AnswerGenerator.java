@@ -5,12 +5,11 @@ import java.util.Set;
 
 public class AnswerGenerator implements Generator {
 
-    //todo local
-    private static final int ANSWER_LENGTH = 4;
-    private static final int MAXIMUM_ANSWER = 10;
-
     @Override
     public String generate() {
+        final int ANSWER_LENGTH = 4;
+        final int MAXIMUM_ANSWER = 10;
+
         Set<String> answerCharSet = new HashSet<>();
         StringBuilder answer = new StringBuilder();
         while(answerCharSet.size() < ANSWER_LENGTH) {
