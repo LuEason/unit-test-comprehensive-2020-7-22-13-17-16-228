@@ -1,29 +1,17 @@
 package example;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.regex.Pattern;
 
 public class GuessValidator implements Validator {
 
-    public static final int RIGHT_INPUT_LENGTH = 4;
+    public static final String ONLY_NUMBER_REGEX = ".*[^0-9]+.*";
+    public static final String NO_REPEAT_NUMBER_REGEX = ".*(.).*\\1.*";
 
     @Override
     public boolean validate(String guess) {
-        if (guess.length() != RIGHT_INPUT_LENGTH) {
+        if (guess.length() != 4) {
             return false;
         }
-        Set<Character> guessCharSet = new HashSet<>();
-        boolean between0and10 = true;
-        for (char character : guess.toCharArray()) {
-            guessCharSet.add(character);
-        }
-
-        for (char character : guessCharSet) {
-            if (character < '0' || character > '9') {
-                between0and10 = false;
-                break;
-            }
-        }
-        return guessCharSet.size() == RIGHT_INPUT_LENGTH && between0and10;
+        return !Pattern.matches(ONLY_NUMBER_REGEX, guess) && !Pattern.matches(NO_REPEAT_NUMBER_REGEX, guess);
     }
 }
